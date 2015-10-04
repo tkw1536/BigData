@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 
 \usepackage{url}
+\usepackage{booktabs}
 
 
 \bibliographystyle{plain}
@@ -22,14 +23,21 @@
 
 In Viktor Mayer - Schoenberg’s book \textit{Big Data: A Revolution That Transforms How we Work, Live, and Think} (with Kenneth Cukier), it refers that big data doesn't simply use random analysis (sampling) as a shortcut; instead, it uses all data analysis and processing. There are 4V features of big data: volume, velocity, variety, value.
 
-US Internet data center pointed out that the data on the internet will grow by 50 percent annually, doubling every two years. Today more than 90\% of the data is generated only in recent years. In addition, the worldwide industrial equipment, such as automobiles, motion, vibration, temperature, and even the change of chemical substances in air humidity, also produced vast amounts of data. The internet, cloud computing, mobile Internet, car networking, phone, tablet, PC and a variety of sensors, all of them are the bearer ways of sources of big data. The value of big data is reflected in the following aspects: 1) to provide a product or service businesses that a large number of consumers can take advantage of big data precision marketing; 2) some small companies or businesses can take advantage of big data to do service transformation; 3) under the pressure of the traditional Internet, companies need to take advantage of the times of the value of big data.
+The USIDC (United States Internet Data Center) pointed out that the data on the internet will grow by 50 percent annually. More than 90\% of the data has been generated in recent years. In addition, the worldwide industrial equipment, such as automobiles, motion, vibration, temperature, and even the change of chemical substances in air humidity, also produced vast amounts of data. Internet, cloud computing, mobile Internet, car networking, phone, tablet, PC and a variety of sensors are the sources of big data. The value of big data is reflected in the following aspects:
+\begin{enumerate}
+  \item to provide a product or service businesses that a large number of consumers can take advantage of big data precision marketing;
+  \item some small companies or businesses can take advantage of big data to do service transformation;
+  \item under the pressure of the traditional Internet, companies need to take advantage of the times of the value of big data.
+\end{enumerate}
 
-How big is the BIG DATA? Only using the internet as an example, during a day, the entire contents of the Internet can be engraved to produce 168 million DVD; the amount of e-mail sent there as much as 294 billion; the amount of community posts sent over is two million, same 770 years of ``Time'' magazine’s number of letter. As of 2012, the amount of data already jumped from TB (1024GB = 1TB) level to PB (1024TB = 1PB), from EB (1024PB = 1EB) to the ZB (1024EB = 1ZB) level. International Data Corporation (IDC) showed that by 2020, the size of data generated worldwide will reach 44 times of today .
+How big is BIG DATA? Using only the internet as an example, during a day, the entire contents of the Internet can be engraved to produce 168 million DVDs; the amount of e-mail sent are as much as 294 billion; the amount of community posts sent over is two million, same as the number of letters printed in 770 years of ``Time'' magazine. As of 2012, the amount of data already jumped from TB (1024GB = 1TB) level to PB (1024TB = 1PB), from EB (1024PB = 1EB) to the ZB (1024EB = 1ZB) level. The IDC (International Data Corporation) showed that by 2020, the size of data generated worldwide will reach 44 times the amount of today.
 
 \section{Motivation}
-Caching is very important when it comes to streaming videos online. According to an article \cite{OnlineVideoBandwagon}, in 2007, 50\% traffic came from several thousand sites and by 2009, 50\% traffic came from 150 sites. Furthermore, by 2013, the 50\% of all internet traffic came form 35 or more sites. From this we can see that the traffic of websites that are popular is being aggravated. A lot of this increase in traffic to a smaller number of websites is due to online video streaming.
 
-Before 2012, video streaming was done using using Real Time Messaging Protocol (RTMP)-based servers. This requires a streaming server and a near-continuous connection between the server and player. Requiring a streaming server can increase implementation cost, while RTMP-based packets can be blocked by firewalls. In 2012, this was replaced by an (Hypertext Transfer Protocol) HTTP-based servers known as MPEG DASH (Dynamic Adaptive Streaming over HTTP).  By using this technology, the servers were able to use HTTP-Caching. This latter capability should both decrease total bandwidth costs associated with delivering the video, since more data can be served from web-based caches rather than the origin server, and improve quality of service, since cached data is generally closer to the viewer and more easily retrievable.
+Caching is very important when it comes to streaming videos online. According to an article \cite{OnlineVideoBandwagon}, in 2007, 50\% of the traffic came from several thousand sites and by 2009, 50\% of the traffic came from 150 sites. Furthermore, by 2013, the 50\% of all internet traffic came from 35 or more sites. From this we can see that the traffic of websites that are popular is being aggravated. A lot of this increase in traffic is going to a smaller number of websites due to online video streaming.
+
+Before 2012, video streaming in YouTube was done using using Real Time Messaging Protocol (RTMP)-based servers. This requires a streaming server and a near-continuous connection between the server and user. Requiring a streaming server can increase implementation cost, while RTMP-based packets can be blocked by firewalls. In 2012, this was replaced by HTTP (Hypertext Transfer Protocol) based servers known as MPEG DASH \cite{MPEGDASH}(Dynamic Adaptive Streaming over HTTP). By using this technology, the servers were able to use HTTP-Caching. This latter capability decreased total bandwidth costs associated with delivering the video, since more data could be served from web-based caches rather than the origin server, and improved quality of service, since cached data is generally closer to the viewer and more easily retrievable.
+
 \section{Big Data Initiative: Research Questions}
 \begin{enumerate}
 \item Which techniques have been implemented in YouTube, in order to reduce the bandwidth consumption?\\
@@ -43,8 +51,29 @@ Before 2012, video streaming was done using using Real Time Messaging Protocol (
 \end{enumerate}
 \section{Formalities}
 \subsection{Time Table}
+\begin{center}
+  \begin{tabular}{l | l}
+  \hline
+  Date & Task \\
+  \hline
+  5th October & Proposal \\
+  13th October & Give proposal presentation \\
+  20th October & Collection usage statistics\\
+  27th October & Finding background\\
+  3rd November & Write final report (\& Review)\\
+  10th November & Write final presentation Outline\\
+  17th November & Design beamer \LaTeX\ presentation\\
+  24th November & (flexible if time is needed)\\
+  1st December & Give final presentation\\\hline
+  \end{tabular}
+\end{center}
 \subsection{Roles}
-
+\begin{itemize}
+  \item Rongrong Bao: Team Manager
+  \item Atabak Hafeez: Harmonizer
+  \item Tom Wiesing: Opponent
+  \item Jinbo Zhang: Proponent
+\end{itemize}
 \renewcommand\refname{\vskip -1cm}
 \section{References}
 \bibliography{proposal}
