@@ -1,0 +1,72 @@
+\documentclass[a4paper,11pt]{article}
+
+% UTF-8
+\usepackage[utf8]{inputenc}
+
+% BibTeX needs urls
+\usepackage{booktabs}
+\usepackage{url}
+
+\bibliographystyle{plain}
+
+% Math - why not?
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+% we might need it
+\usepackage{enumitem}
+
+% ednotes - please use them
+\usepackage[show]{ed}
+
+% make the title page a bit smaller
+\usepackage{titling}
+
+% Force single spacing
+\renewcommand{\baselinestretch}{1.0}
+
+\title{Big Data Initiative:\\Effective Caching in Online Video Platforms\\Draft\ednote{Remove draft status}}
+\author{Rongrong Bao \and Atabak Hafeez \and Tom Wiesing \and Jinbo Zhang}
+\date{\today}
+
+\begin{document}
+  
+\maketitle
+
+\begin{abstract}
+  Data on the internet grows by 50 percent annually. More than 90\% of the data has been generated in recent years. This is the time for big data. How can we effectively transfer this huge amount of data? 
+
+  We want to investigate caching techniques used by online video platforms and in particular by YouTube. YouTube is a leading online video provider worldwide. Before 2012, video streaming in YouTube was done using Real Time Messaging Protocol (RTMP)-based servers. This requires a streaming server and a near-continuous connection between the server and user. Requiring such a streaming server can increase implementation cost and RTMP-based video streaming is at risk of being blocked by firewalls. In 2012, this was replaced by HTTP (Hypertext Transfer Protocol) based servers known as MPEG DASH (Dynamic Adaptive Streaming over HTTP). HTTP is the protocol used by websites to bring their content to the users. By using this technology it was possible to use existing optimizations in the form of HTTP-Caching. This capability decreased total bandwidth costs associated with delivering the video since videos would be served from web-based caches rather than the origin server. This improved quality of service, since cached data is generally closer to the viewer and more easily retrievable. 
+
+  The essay will explain and discuss different kinds of caching techniques, optimizations, data analysis and prediction techniques used by YouTube, including their advantages/disadvantages and potential social impacts.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+\section{Introduction}
+\input{parts/intro.tex}
+
+\newpage
+\section{What is Caching?}
+\input{parts/technical.tex}
+
+\newpage
+\section{Advantages of Caching}
+\input{parts/advantages.tex}
+
+\newpage
+\section{Disadvantages of Caching}
+\input{parts/disadvantages.tex}
+
+\newpage
+\section{Conclusion}
+
+\newpage
+\renewcommand\refname{\vskip -1cm}
+\section{References}
+\bibliography{draft}
+\end{document}
