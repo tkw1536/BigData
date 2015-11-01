@@ -1,13 +1,12 @@
-
 Notably, YouTube used two techniques to deliver web contents effectively -- Distributed Caching and Content Delivery Network.
 
-A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\ednote{\url{https://en.wikipedia.org/wiki/Distributed_cache}}. Before we talked about distributed caching technique more deeply, we introduce some terms to help us better understand the idea behind it. In communication networks, a \textbf{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textbf{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
+A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. Before we talked about distributed caching technique more deeply, we introduce some terms to help us better understand the idea behind it. In communication networks, a \textbf{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textbf{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
 
 One significant advantage for distributed caching, is that when the application scales by adding or removing servers, or when servers are replaced due to upgrades or faults, the cached data remains accessible to every server that runs the application. For example, If we have data \texttt{1, 2, 3, 4, 5} and servers \texttt{A, B, C} If we store \texttt{1, 2, 5} in \texttt{A}, \texttt{3, 5, 4} in B, \texttt{1, 2, 3, 4} in \texttt{C}. If one server is down, we won't lose any data, because every piece of data has a copy in another server.
 
 \ednote{Graph needed here. Someone please?}
 
-By distributing data efficiently and effectively(typically by different hashing techniques), caching can dramatically improve application responsiveness. Comparing to access data from relational databases, which requires a lot computations, accessing data from cache is much faster. Caching works best for application workloads that do more reading than writing of data, and when application users share a lot of common data. So this is why such technique is very useful for YouTube: those popular videos will be watched again and again.
+By distributing data efficiently and effectively (typically by different hashing techniques), caching can dramatically improve application responsiveness. Comparing to access data from relational databases, which requires a lot computations, accessing data from cache is much faster. Caching works best for application workloads that do more reading than writing of data, and when application users share a lot of common data. So this is why such technique is very useful for YouTube: those popular videos will be watched again and again.
 
 \begin{figure}[H]
 	\centering
@@ -15,7 +14,7 @@ By distributing data efficiently and effectively(typically by different hashing 
 	\caption{A very popular video in YouTube which is watched more than 700 million times}
 \end{figure}
 
-In order to get data from cache, the data must exist in cache before retrieving. There are several strategies for putting data into a cache:\ednote{\url{http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching}}
+In order to get data from cache, the data must exist in cache before retrieving. There are several strategies for putting data into a cache \cite{azure:distributed}:
 
 \textbf{On Demand / Cache Aside} The application tries to retrieve data from cache, and when the cache doesn't have the data (a "miss"), the application stores the data in the cache so that it will be available the next time. The next time the application tries to get the same data, it finds what it's looking for in the cache (a "hit").
 
@@ -27,7 +26,7 @@ Strategy 2 is clearly the best for YouTube. YouTube will the count the watching 
 
 When we type \url{www.youtube.com} in our browser, How can they determine which server will respond our request? There are several different techniques for determining the responsive server, in the paper, we will mainly focus on one of the them -- Content Delivery Network.
 
-A Content Delivery Network is a system of distributed servers (network) that deliver web pages and other Web content to a user based on the geographic locations of the user, the origin of the web page and a content delivery server \ednote{\url{http://www.webopedia.com/TERM/C/CDN.html}}.
+A Content Delivery Network is a system of distributed servers (network) that deliver web pages and other Web content to a user based on the geographic locations of the user, the origin of the web page and a content delivery server \cite{webopedia:cdn}.
 
 This service is effective in speeding the delivery of content of websites with high traffic and websites that have global reach. The closer the CDN server is to the user geographically, the faster the content will be delivered to the user. CDNs also provide protection from large surges in traffic.
 

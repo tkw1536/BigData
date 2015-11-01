@@ -4,26 +4,17 @@ Caching is a method to store data in cache. A cache is a basically temporary sto
 
 
 \subsection{Caching and Buffering in Youtube}
-To explain caching in Youtube and how it has changed and updated, we also need to understand the notion of buffering. Buffering involves pre-loading data into a certain area of memory known as a "buffer". This is basically a a more specific kind of caching which Youtube uses to store the loaded video on to the local memory of the browser in use. 
+To explain caching in Youtube and how it has changed and updated, we also need to understand the notion of buffering. Buffering involves pre-loading data into a certain area of memory known as a "buffer". This is basically a a more specific kind of caching which Youtube uses to store the loaded video on to the local memory of the browser in use.
 
-In 2013, Youtube made a design decision in their buffering system where they moved from Real Time Messaging Protocol (RTMP)-based Dynamic Streaming to MPEG DASH (Dynamic Adaptive Streaming over HTTP). 
+In 2013, Youtube made a design decision in their buffering system where they moved from Real Time Messaging Protocol (RTMP)-based Dynamic Streaming to MPEG DASH (Dynamic Adaptive Streaming over HTTP).
 
 To a user, this is important because it changes the extent to which you can cache you Youtube video before viewing it. Basically, while Youtube was using RTMP-based Dynamic Streaming, if a user had a relatively slow connection, which would not allow them to view the video as smoothly as one would want, he could pause the video and view it later when the whole video is buffered or cached to the local storage of the browser. This technology required a near-continuous connection between the server - the original storage location where one's local computer is connected to retrieve the video - and the player on one's browser.
 
-With Youtube's shift to using MPEG DASH, being able to buffer the whole video and then coming back to it was no longer possible. MPEG DASH use standard HTTP web servers to deliver streaming content, obviating the need for a streaming server. In addition, HTTP packets are firewall friendly and can utilise HTTP caching mechanisms on the web. To an average user, this means that now when he or she pauses a video because the video is not very smooth, the video buffers for a while and then stops buffering. The cache, hence, does not at this stage store the whole video. The only condition in which the video may cache the whole video is if you start the video and watch the whole way through. In this case, if the user turns off the internet, it would be possible for the user to re-watch the video without having to reload it from the server. 
+With Youtube's shift to using MPEG DASH, being able to buffer the whole video and then coming back to it was no longer possible. MPEG DASH use standard HTTP web servers to deliver streaming content, obviating the need for a streaming server. In addition, HTTP packets are firewall friendly and can utilise HTTP caching mechanisms on the web. To an average user, this means that now when he or she pauses a video because the video is not very smooth, the video buffers for a while and then stops buffering. The cache, hence, does not at this stage store the whole video. The only condition in which the video may cache the whole video is if you start the video and watch the whole way through. In this case, if the user turns off the internet, it would be possible for the user to re-watch the video without having to reload it from the server.
 
 \subsection{Caching on the Servers}
-So why did Youtube decide to make this significant change in their protocol? This is mainly because this makes streaming high quality videos more efficient because it can use caching on the servers. 
+So why did Youtube decide to make this significant change in their protocol? This is mainly because this makes streaming high quality videos more efficient because it can use caching on the servers.
 
-Caching on the server means that when a user connects to a server, the connection is not direct. There is something in-between known as a caching server. The caching server acts as a web proxy server so it can serve those requests. After a web proxy server receives requests for web objects, it either serves the requests or forwards them to the origin server (the web server that contains the original copy of the requested information). Using MGEP DASH, Youtube was able to exploit this feature resulting in higher resolution videos being available to the user in a more efficient manner. 
+Caching on the server means that when a user connects to a server, the connection is not direct. There is something in-between known as a caching server. The caching server acts as a web proxy server so it can serve those requests. After a web proxy server receives requests for web objects, it either serves the requests or forwards them to the origin server (the web server that contains the original copy of the requested information). Using MGEP DASH, Youtube was able to exploit this feature resulting in higher resolution videos being available to the user in a more efficient manner.
 
-This form of caching also aims to make sure that the user can experience the best quality of video according to the available brandwidth speed. For example, a video may start playing at 360P resolution, but if the system detects that the brandwidth is now able to handle 720P, it will shift to that. Thus, using MPEG DASH, Youtube only caches chunks of the video and only a small chunk of them are loaded when a video is paused.
-
-
-
-References:
-%https://www.citrix.com/glossary/caching.html
-%http://www.streamingmedia.com/Articles/ReadArticle.aspx?ArticleID=91353&PageNum=2
-%http://www.streamingmedia.com/Articles/Editorial/What-Is-.../What-is-MPEG-DASH-79041.aspx
-%http://trafficserver.readthedocs.org/en/latest/admin/http-proxy-caching.en.html
-
+This form of caching also aims to make sure that the user can experience the best quality of video according to the available brandwidth speed. For example, a video may start playing at 360P resolution, but if the system detects that the brandwidth is now able to handle 720P, it will shift to that. Thus, using MPEG DASH, Youtube only caches chunks of the video and only a small chunk of them are loaded when a video is paused. 

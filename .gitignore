@@ -6,5 +6,10 @@
 *.out
 *.idx
 *.vrb
+*.fks
+*.fdb_latexmk
+*.blg
+*.bbl
+*.fls
 .DS_Store
 *.synctex.gz
