@@ -1,6 +1,10 @@
+\ednote{Make subsections}
+\ednote{A few intro words}
+\ednote{what are DC and CDN solving?}
+
 Notably, YouTube used two techniques to deliver web contents effectively -- Distributed Caching and Content Delivery Network.
 
-A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. Before we talk about distributed caching technique more deeply, we introduce some terms to help us better understand the idea behind it. In communication networks, a \textit{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textit{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
+A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. Before we talk about distributed caching technique more deeply, we will introduce some terms to help us better understand the idea behind it. In communication networks, a \textit{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textit{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
 
 One significant advantage for distributed caching, is that when the application scales by adding or removing servers, or when servers are replaced due to upgrades or faults, the cached data remain accessible to every server that runs the application. For example, If we have data \texttt{1, 2, 3, 4, 5} and servers \texttt{A, B, C}, and we store \texttt{1, 2, 5} in \texttt{A}, \texttt{3, 5, 4} in B, \texttt{1, 2, 3, 4} in \texttt{C}. If one server is down, we won't lose any data, because every piece of data has a copy in another server.
 
@@ -19,9 +23,9 @@ In order to get data from cache, the data must exist in cache before retrieving.
 	\item On Demand \ednote{try not to be so scary}
 
 	The application tries to retrieve data from cache, and when the cache doesn't have the data (a "miss"), the application stores the data in the cache so that it will be available the next time. The next time the application tries to get the same data, it finds what it's looking for in the cache (a "hit").
-	
+
 	\item Background Data Push
-	
+
 	Background services push data into the cache on a regular schedule, and the application always pulls from the cache. This approach works great with high latency data sources that don't require you always return the latest data.
 \end{itemize}
 
@@ -29,7 +33,7 @@ Strategy 2 is clearly the better for YouTube. YouTube will the count the watchin
 
 When we type \url{www.youtube.com} in our browser, how can they determine which server will respond our request? There are several different techniques for determining the responsive server, in this paper, we will mainly focus on one of the them -- \textit{Content Delivery Network}.
 
-A \textit{Content Delivery Network} is a system of distributed network that delivers web pages and other web contents to a user based on the geographic locations of the user, the origin of the web page and a content delivery server \cite{webopedia:cdn}.
+A \textit{Content Delivery Network} (or CDN for short) is a system of distributed network that delivers web pages and other web contents to a user based on the geographic locations of the user, the origin of the web page and a content delivery server \cite{webopedia:cdn}.
 
 This service is effective in speeding the delivery of content of websites with high traffic and websites that have global reach. The closer the CDN server is to the user geographically, the faster the content will be delivered to the user. CDNs also provide protection from large surges in traffic.
 
