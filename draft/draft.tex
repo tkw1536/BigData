@@ -8,6 +8,16 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{fancyhdr}
+\newcommand{\mypagestyle}{
+	\fancyhf{}
+	\pagestyle{fancy}
+	\rhead{\thepage}
+	\lhead{\leftmark}
+	\fancyfoot[CE,CO]{Effective Caching in Online Video Platforms}
+	\renewcommand{\headrulewidth}{2pt}
+	\renewcommand{\footrulewidth}{2pt}
+}
 
 % BibTeX needs urls
 \usepackage{booktabs}
@@ -29,21 +39,38 @@
 % Force single spacing
 \renewcommand{\baselinestretch}{1.0}
 
-\title{Big Data Initiative:\\Effective Caching in Online Video Platforms\\Draft\ednote{Remove draft status; Preliminary title}}
-%\author{Rongrong Bao \and Atabak Hafeez \and Tom Wiesing \and Jinbo Zhang}
-\date{\today}
+% Title Page
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+	\thispagestyle{empty}
+	\hbox{ % Horizontal box
+		\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+		\rule{1pt}{\textheight} % Vertical line
+		\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+		\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+			
+			{\noindent\LARGE\bfseries Big Data Initiative: \\[0.5\baselineskip] Effective Caching in \\[0.5\baselineskip] Online Video Platforms}\\[2\baselineskip] % Title
+			{\large \textit{some subtitles}}\\[4\baselineskip] % Tagline or further description
+			{\large Rongrong Bao\ \ \ Atabak Hafeez\\[0.5\baselineskip] Tom Wiesing\ \ \ Jinbo Zhang} % Author name
+			
+			\vspace{0.45\textheight} % Whitespace between the title block and the publisher
+		}}
+		\endgroup}
 
 \begin{document}
+\mypagestyle
+\titleGM
 
-\maketitle
-
+\clearpage
+\vspace*{\fill}
 \begin{abstract}
-  Data on the internet grows by 50 percent annually. More than 90\% of the data has been generated in recent years. This is the time for big data. How can we effectively transfer this huge amount of data?
-
-  We want to investigate caching techniques used by online video platforms and in particular by YouTube. YouTube is a leading online video provider worldwide. Before 2012, video streaming in YouTube was done using Real Time Messaging Protocol (RTMP)-based servers. This requires a streaming server and a near-continuous connection between the server and user. Requiring such a streaming server can increase implementation cost and RTMP-based video streaming is at risk of being blocked by firewalls. In 2012, this was replaced by HTTP (Hypertext Transfer Protocol) based servers known as MPEG DASH (Dynamic Adaptive Streaming over HTTP). HTTP is the protocol used by websites to bring their content to the users. By using this technology it was possible to use existing optimizations in the form of HTTP-Caching. This capability decreased total bandwidth costs associated with delivering the video since videos would be served from web-based caches rather than the origin server. This improved quality of service, since cached data is generally closer to the viewer and more easily retrievable.
-
-  The essay will explain and discuss different kinds of caching techniques, optimizations, data analysis and prediction techniques used by YouTube, including their advantages/disadvantages and potential social impacts.
+	Data on the internet grows by 50 percent annually. More than 90\% of the data has been generated in recent years. This is the time for big data. How can we effectively transfer this huge amount of data?
+	
+	We want to investigate caching techniques used by online video platforms and in particular by YouTube. YouTube is a leading online video provider worldwide. Before 2012, video streaming in YouTube was done using Real Time Messaging Protocol (RTMP)-based servers. This requires a streaming server and a near-continuous connection between the server and user. Requiring such a streaming server can increase implementation cost and RTMP-based video streaming is at risk of being blocked by firewalls. In 2012, this was replaced by HTTP (Hypertext Transfer Protocol) based servers known as MPEG DASH (Dynamic Adaptive Streaming over HTTP). HTTP is the protocol used by websites to bring their content to the users. By using this technology it was possible to use existing optimizations in the form of HTTP-Caching. This capability decreased total bandwidth costs associated with delivering the video since videos would be served from web-based caches rather than the origin server. This improved quality of service, since cached data is generally closer to the viewer and more easily retrievable.
+	
+	The essay will explain and discuss different kinds of caching techniques, optimizations, data analysis and prediction techniques used by YouTube, including their advantages/disadvantages and potential social impacts.
 \end{abstract}
+\vfill % equivalent to \vspace{\fill}
+\clearpage
 
 \newpage
 
