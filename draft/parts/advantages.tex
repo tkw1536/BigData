@@ -1,14 +1,14 @@
-\ednote{Make subsections}
-\ednote{A few intro words}
-\ednote{what are DC and CDN solving?}
+As the data size on the Internet increases significantly, caching plays a more and more important role in this big data era. Elegantly designed caching techniques can notably reduce the burden on a server.  
+As a typical high-traffic website and a leading website in video-sharing field, YouTube uses two techniques to deliver web contents effectively -- Distributed Caching and Content Delivery Network. We will have a close look on these two techniques.
+\subsection{Distributed Caching}
+A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. With distributed cache, a website can response more requests simultaneously. Before we talk about distributed caching technique more deeply, we will introduce some terms to help us better understand the idea behind it. In communication networks, a \textit{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textit{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
 
-Notably, YouTube used two techniques to deliver web contents effectively -- Distributed Caching and Content Delivery Network.
-
-A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. Before we talk about distributed caching technique more deeply, we will introduce some terms to help us better understand the idea behind it. In communication networks, a \textit{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textit{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
-
-One significant advantage for distributed caching, is that when the application scales by adding or removing servers, or when servers are replaced due to upgrades or faults, the cached data remain accessible to every server that runs the application. For example, If we have data \texttt{1, 2, 3, 4, 5} and servers \texttt{A, B, C}, and we store \texttt{1, 2, 5} in \texttt{A}, \texttt{3, 5, 4} in B, \texttt{1, 2, 3, 4} in \texttt{C}. If one server is down, we won't lose any data, because every piece of data has a copy in another server.
-
-\ednote{Graph needed here. Someone please?}
+One significant advantage for distributed caching, is that when the application scales by adding or removing servers, or when servers are replaced due to upgrades or faults, the cached data remain accessible to every server that runs the application. For example, If we have data \texttt{1, 2, 3, 4, 5} and servers \texttt{A, B, C}, and we store \texttt{1, 2, 5} in \texttt{A}, \texttt{3, 4, 5} in B, \texttt{1, 2, 3, 4} in \texttt{C}. If one server is down, we won't lose any data, because every piece of data has a copy in another server.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{server.jpg}
+	\caption{An example illustrated how distributed caching works}
+\end{figure}
 
 By distributing data efficiently and effectively, caching can dramatically improve application responsiveness. Comparing to access data from relational databases, which requires a lot computations, accessing data from cache is much faster. Caching works best for application workloads that do more reading than writing of data, and when application users share a lot of common data. So this is why such technique is very useful for YouTube: those popular videos will be watched again and again.
 
@@ -20,7 +20,7 @@ By distributing data efficiently and effectively, caching can dramatically impro
 
 In order to get data from cache, the data must exist in cache before retrieving. There are several strategies for putting data into a cache \cite{azure:distributed}:
 \begin{itemize}
-	\item On Demand \ednote{try not to be so scary}
+	\item On Demand
 
 	The application tries to retrieve data from cache, and when the cache doesn't have the data (a "miss"), the application stores the data in the cache so that it will be available the next time. The next time the application tries to get the same data, it finds what it's looking for in the cache (a "hit").
 
@@ -31,12 +31,13 @@ In order to get data from cache, the data must exist in cache before retrieving.
 
 Strategy 2 is clearly the better for YouTube. YouTube will the count the watching times in order to filter the popular videos from non-popular ones, or count the watching times per minute in order to filter the trendy videos from the outdated ones, thus the background services have enough information to determine which videos will be pushed into cache. Also, once the video is uploaded, it will not change anymore, so the cached data will always stay tuned with the original one.
 
-When we type \url{www.youtube.com} in our browser, how can they determine which server will respond our request? There are several different techniques for determining the responsive server, in this paper, we will mainly focus on one of the them -- \textit{Content Delivery Network}.
+When we type \url{www.youtube.com} in our browser, how can they determine which server will respond our request? There are several different techniques for determining the responsive server, in this paper, we will only focus on one of the them -- \textit{Content Delivery Network}.
 
+\subsection{Content Delivery Network}
 A \textit{Content Delivery Network} (or CDN for short) is a system of distributed network that delivers web pages and other web contents to a user based on the geographic locations of the user, the origin of the web page and a content delivery server \cite{webopedia:cdn}.
 
 This service is effective in speeding the delivery of content of websites with high traffic and websites that have global reach. The closer the CDN server is to the user geographically, the faster the content will be delivered to the user. CDNs also provide protection from large surges in traffic.
 
-Servers nearest to the website visitor respond to the request. The CDN copies the pages of a website to a network of servers that are dispersed at geographically different locations, caching the contents of the page. When a user requests a web page that is part of a content delivery network, the CDN will redirect the request from the originating site's server to a server in the CDN that is closest to the user and deliver the cached content. The CDN will also communicate with the originating server to deliver any content that has not been previously cached \ednote{These three part need to polish.}.
+Servers nearest to the website visitor respond to the request. The CDN copies the pages of a website to a network of servers that are dispersed at geographically different locations, caching the contents of the page. When a user requests a web page that is part of a content delivery network, the CDN will redirect the request from the originating site's server to a server in the CDN that is closest to the user and deliver the cached content. The CDN will also communicate with the originating server to deliver any content that has not been previously cached.
 
 Thus, the CDN can reduce traffic on the primary network, which improves video content and web performance overall.
