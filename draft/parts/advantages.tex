@@ -1,7 +1,7 @@
-As the data size on the Internet increases significantly, caching plays a more and more important role in this big data era. Elegantly designed caching techniques can notably reduce the burden on a server.  
+As the data size on the Internet increases significantly, caching plays a more and more important role in this Big Data era. Elegantly designed caching techniques can notably reduce the burden on a server.  
 As a typical high-traffic website and a leading website in video-sharing field, YouTube uses two techniques to deliver web contents effectively -- Distributed Caching and Content Delivery Network. We will have a close look on these two techniques.
 \subsection{Distributed Caching}
-A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. With distributed cache, a website can response more requests simultaneously. Before we talk about distributed caching technique more deeply, we will introduce some terms to help us better understand the idea behind it. In communication networks, a \textit{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textit{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
+A distributed cache is an extension of the traditional concept of cache used in a single locale. A distributed cache may span multiple servers so that it can grow in size and in transactional capacity\cite{wiki:dcache}. With distributed cache, a website can respond to more requests simultaneously. Before we talk about distributed caching techniques more deeply, we will introduce some terms to help us better understand the idea behind it. In communication networks, a \textit{node} is either a connection point, a redistribution point, or a communication endpoint. Speaking of distributed network, the nodes are clients, servers or peers. By storing the data not on the individual web server's memory but on other cloud resources, \textit{distributed cache} offers high throughput, low-latency access to commonly accessed application data.
 
 One significant advantage for distributed caching, is that when the application scales by adding or removing servers, or when servers are replaced due to upgrades or faults, the cached data remain accessible to every server that runs the application. For example, If we have data \texttt{1, 2, 3, 4, 5} and servers \texttt{A, B, C}, and we store \texttt{1, 2, 5} in \texttt{A}, \texttt{3, 4, 5} in B, \texttt{1, 2, 3, 4} in \texttt{C}. If one server is down, we won't lose any data, because every piece of data has a copy in another server.
 \begin{figure}[H]
@@ -15,7 +15,7 @@ By distributing data efficiently and effectively, caching can dramatically impro
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{CallMeMaybe.png}
-	\caption{A very popular video in YouTube which is watched more than 700 million times}
+	\caption{A very popular video in YouTube which has been watched more than 700 million times}
 \end{figure}
 
 In order to get data from cache, the data must exist in cache before retrieving. There are several strategies for putting data into a cache \cite{azure:distributed}:
